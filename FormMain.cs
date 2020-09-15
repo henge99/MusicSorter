@@ -28,7 +28,7 @@ namespace MusicSorter
                 ListViewItem item = new ListViewItem();
                 item.Text = song.GetFileName();
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, song.GetNicePath()));
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, song.GetGroup().GetName()));
+                item.Group = new ListViewGroup(song.GetGroup().GetName());
                 listView1.Items.Add(item);
             }
         }

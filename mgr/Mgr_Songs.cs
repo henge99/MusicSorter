@@ -44,14 +44,18 @@ namespace MusicSorter.mgr
                 foreach (string songPath in Directory.GetFiles(path))
                 {
                     string nicepath = songPath.Replace(mainPath + "\\", "");
-                    Group group = MgrGroups.AddSongToGroup(nicepath);
-                    Song song = new Song(
-                        songPath,
-                        Path.GetFileName(songPath),
-                        nicepath,
-                        group
-                    );
-                    songs.Add(song);
+                    string groupname = Directory.GetParent(songPath).Name;
+                    Group group = MgrGroups.AddSongToGroup(groupname);
+                    if (group != null)
+                    {
+                        Song song = new Song(
+                           songPath,
+                           Path.GetFileName(songPath),
+                           nicepath,
+                           group
+                        );
+                        songs.Add(song);
+                    }
                 }
                 foreach (string directory in Directory.GetDirectories(path))
                 {

@@ -15,7 +15,20 @@ namespace MusicSorter.mgr
 
         public Group AddSongToGroup(string groupname)
         {
-            return null;
+            Group songGroup = null;
+            foreach (Group group in groups)
+            {
+                if (group.GetName() == groupname)
+                {
+                    songGroup = group;
+                    break;
+                }
+            }
+            if (songGroup == null)
+            {
+                groups.Add(new Group(groupname));
+            }
+            return songGroup;
         }
 
     }
